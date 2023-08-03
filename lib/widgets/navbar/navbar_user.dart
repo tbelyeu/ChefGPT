@@ -18,10 +18,9 @@ class NavBarUser extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           const CustomText(
-              text: "Tyler Belyeu",
-              size: 20,
-              color: dark,
-              weight: FontWeight.normal),
+            text: "Tyler Belyeu",
+            size: 20,
+          ),
           const SizedBox(width: 8),
           Container(
             padding: const EdgeInsets.all(2),

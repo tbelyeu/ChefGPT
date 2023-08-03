@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/layout.dart';
+import 'package:chefgpt/controllers/menu_controller.dart';
 
 void main() {
+  Get.put(SideMenuController());
   runApp(const MyApp());
 }
 

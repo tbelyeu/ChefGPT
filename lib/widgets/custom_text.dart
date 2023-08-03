@@ -1,3 +1,4 @@
+import 'package:chefgpt/constants/style.dart';
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
@@ -5,12 +6,13 @@ class CustomText extends StatelessWidget {
   final double size;
   final Color color;
   final FontWeight weight;
+
   const CustomText(
       {super.key,
       required this.text,
-      required this.size,
-      required this.color,
-      required this.weight});
+      this.size = 16,
+      this.color = dark,
+      this.weight = FontWeight.normal});
 
   @override
   Widget build(BuildContext context) {

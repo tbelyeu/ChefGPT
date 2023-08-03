@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const int largeScreenSize = 2000;
-const int mediumScreenSize = 1500;
+const int mediumScreenSize = 1250;
 const int smallScreenSize = 750;
 
 class ResponsiveWidget extends StatelessWidget {

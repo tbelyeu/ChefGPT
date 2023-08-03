@@ -1,8 +1,8 @@
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/helpers/responsiveness.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
-import 'package:chefgpt/widgets/navbar_user.dart';
-import 'package:chefgpt/widgets/notification_button.dart';
+import 'package:chefgpt/widgets/navbar/navbar_user.dart';
+import 'package:chefgpt/widgets/navbar/notification_button.dart';
 import 'package:flutter/material.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
@@ -31,7 +31,6 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
         const Visibility(
           child: CustomText(
             text: "ChefGPT",
-            color: dark,
             size: 25,
             weight: FontWeight.w600,
           ),
