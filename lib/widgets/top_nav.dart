@@ -2,6 +2,7 @@ import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/helpers/responsiveness.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:chefgpt/widgets/navbar_user.dart';
+import 'package:chefgpt/widgets/notification_button.dart';
 import 'package:flutter/material.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
@@ -43,13 +44,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           ),
           onPressed: () {},
         ),
-        IconButton(
-          icon: const Icon(
-            Icons.notifications,
-            color: dark,
-          ),
-          onPressed: () {},
-        ),
+        const NotificationButton(),
         const NavBarUser(),
       ]),
       iconTheme: const IconThemeData(color: dark),
