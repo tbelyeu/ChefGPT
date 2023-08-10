@@ -11,10 +11,7 @@ class MyRecipesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          // flex: 1,
-          child: Container(),
-        ),
+        const SizedBox(width: 30),
         Expanded(
           flex: 6,
           child: Column(

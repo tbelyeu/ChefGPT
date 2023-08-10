@@ -1,5 +1,7 @@
+import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/helpers/responsiveness.dart';
+import 'package:chefgpt/routing/routes.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:chefgpt/widgets/navbar/navbar_user.dart';
 import 'package:chefgpt/widgets/navbar/notification_button.dart';
@@ -41,7 +43,12 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             Icons.settings,
             color: dark,
           ),
-          onPressed: () {},
+          onPressed: () {
+            if (menuController.activeItem.value != SettingsPageRoute) {
+              navigationController.navigateTo(SettingsPageRoute);
+              menuController.changeActiveItemTo(SettingsPageRoute);
+            }
+          },
         ),
         const NotificationButton(),
         const NavBarUser(),

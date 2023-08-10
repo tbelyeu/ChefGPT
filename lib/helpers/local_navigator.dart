@@ -5,6 +5,6 @@ import 'package:flutter/material.dart';
 
 Navigator LocalNavigator() => Navigator(
       key: navigationController.navigationKey,
-      initialRoute: NewRecipePageRoute,
+      initialRoute: MyRecipesPageRoute,
       onGenerateRoute: generateRoute,
     );

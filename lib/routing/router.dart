@@ -2,6 +2,7 @@ import 'package:chefgpt/pages/authentication/sign_in.dart';
 import 'package:chefgpt/pages/authentication/sign_up.dart';
 import 'package:chefgpt/pages/my_recipes/my_recipes.dart';
 import 'package:chefgpt/pages/new_recipe/new_recipe.dart';
+import 'package:chefgpt/pages/settings/settings.dart';
 import 'package:chefgpt/routing/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(const SignInPage());
     case SignUpPageRoute:
       return _getPageRoute(const SignUpPage());
+    case SettingsPageRoute:
+      return _getPageRoute(const SettingsPage());
     default:
       return _getPageRoute(const NewRecipePage());
   }

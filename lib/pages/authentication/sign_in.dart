@@ -3,7 +3,6 @@ import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/pages/authentication/widgets/sign_in_button.dart';
 import 'package:chefgpt/routing/routes.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
-import 'package:chefgpt/routing/router.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatelessWidget {

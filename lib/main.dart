@@ -1,5 +1,6 @@
 import 'package:chefgpt/controllers/ingredient_controller.dart';
 import 'package:chefgpt/controllers/navigation_controller.dart';
+import 'package:chefgpt/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,7 @@ void main() {
   Get.put(SideMenuController());
   Get.put(NavigationController());
   Get.put(NewRecipeController());
+  Get.put(SettingsController());
   runApp(const MyApp());
 }
 
