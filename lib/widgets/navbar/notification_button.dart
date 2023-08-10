@@ -6,8 +6,8 @@ class NotificationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _unreadNotifications = true;
-    if (_unreadNotifications) {
+    bool unreadNotifications = true;
+    if (unreadNotifications) {
       return Stack(
         children: [
           IconButton(

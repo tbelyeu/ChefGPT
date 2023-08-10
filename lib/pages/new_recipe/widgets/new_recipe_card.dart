@@ -34,12 +34,15 @@ class NewRecipeCard extends StatelessWidget {
           controller: expandableController,
           header: Row(
             children: [
-              CustomText(
-                text: title,
-                size: 24,
-              ),
               Expanded(
-                child: Container(),
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
               Obx(
                 () => IconButton(
@@ -66,6 +69,7 @@ class NewRecipeCard extends StatelessWidget {
           expanded: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 10),
               const CustomText(
                 text: "Ingredients",
                 size: 20,

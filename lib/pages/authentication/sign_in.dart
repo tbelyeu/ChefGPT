@@ -112,7 +112,7 @@ class SignInPage extends StatelessWidget {
               onPressed: () => navigationController.navigateTo(SignUpPageRoute),
               child: const CustomText(
                 text: "Sign up",
-                color: linkBlue,
+                color: accentPurple,
               ),
             )
           ],

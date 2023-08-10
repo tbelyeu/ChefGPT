@@ -12,7 +12,7 @@ class HorizontalMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: onTap,
       onHover: (value) {
@@ -39,7 +39,7 @@ class HorizontalMenuItem extends StatelessWidget {
                     color: dark,
                   ),
                 ),
-                SizedBox(width: _width / 80),
+                SizedBox(width: width / 80),
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: menuController.returnIconFor(itemName),

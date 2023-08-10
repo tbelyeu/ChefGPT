@@ -34,12 +34,6 @@ class MyRecipesPage extends StatelessWidget {
                       final instructions =
                           newRecipeController.recipeInstructionsList[index];
 
-                      if (newRecipeController.recipeStarred.isEmpty) {
-                        for (var recipe in newRecipeController.recipesList) {
-                          newRecipeController.recipeStarred.add(false);
-                        }
-                      }
-
                       return Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Dismissible(

@@ -29,12 +29,15 @@ class SavedRecipeCard extends StatelessWidget {
           controller: expandableController,
           header: Row(
             children: [
-              CustomText(
-                text: title,
-                size: 24,
-              ),
               Expanded(
-                child: Container(),
+                child: Text(
+                  title,
+                  maxLines: 2,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
               IconButton(
                 icon: const Icon(
@@ -46,7 +49,7 @@ class SavedRecipeCard extends StatelessWidget {
                 hoverColor: Colors.transparent,
                 splashRadius: 0.01,
                 onPressed: () {
-                  // newRecipeController.toggleRecipeStarred(index);
+                  // TODO:: implement sharing
                 },
               ),
             ],

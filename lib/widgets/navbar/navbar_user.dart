@@ -7,8 +7,8 @@ class NavBarUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _loggedIn = false;
-    if (_loggedIn) {
+    bool loggedIn = false;
+    if (loggedIn) {
       return Row(
         children: [
           Container(
