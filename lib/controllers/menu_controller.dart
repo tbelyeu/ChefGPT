@@ -26,7 +26,7 @@ class SideMenuController extends GetxController {
         return _customIcon(Icons.add, itemName);
       case MyRecipesPageRoute:
         return _customIcon(Icons.star, itemName);
-      case AuthenticationPageRoute:
+      case SignInPageRoute:
         return _customIcon(Icons.login, itemName);
       default:
         return _customIcon(Icons.logout, itemName);

@@ -1,27 +1,22 @@
-import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
+import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:chefgpt/widgets/ordered_list.dart';
 import 'package:chefgpt/widgets/unordered_list.dart';
-import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class NewRecipeCard extends StatelessWidget {
+class SavedRecipeCard extends StatelessWidget {
   final String title;
   final List<String> ingredients;
   final List<String> instructions;
-  final int index;
-  const NewRecipeCard(
+  const SavedRecipeCard(
       {super.key,
       required this.title,
       required this.ingredients,
-      required this.instructions,
-      required this.index});
+      required this.instructions});
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {});
     ExpandableController expandableController =
         ExpandableController(initialExpanded: true);
 
@@ -41,25 +36,18 @@ class NewRecipeCard extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              Obx(
-                () => IconButton(
-                  icon: newRecipeController.recipeStarred[index]
-                      ? Icon(
-                          Icons.star,
-                          color: Colors.amber.shade300,
-                        )
-                      : const Icon(
-                          Icons.star_border,
-                          color: dark,
-                        ),
-                  iconSize: 32,
+              IconButton(
+                icon: const Icon(
+                  Icons.share,
                   color: dark,
-                  hoverColor: Colors.transparent,
-                  splashRadius: 0.01,
-                  onPressed: () {
-                    newRecipeController.toggleRecipeStarred(index);
-                  },
                 ),
+                iconSize: 32,
+                color: dark,
+                hoverColor: Colors.transparent,
+                splashRadius: 0.01,
+                onPressed: () {
+                  // newRecipeController.toggleRecipeStarred(index);
+                },
               ),
             ],
           ),

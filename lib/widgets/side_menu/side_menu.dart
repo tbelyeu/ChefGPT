@@ -54,9 +54,8 @@ class SideMenu extends StatelessWidget {
                       //     : itemName,
                       itemName: itemName,
                       onTap: () {
-                        bool _loggedIn = false;
-                        if (itemName == AuthenticationPageRoute && _loggedIn) {
-                          // TODO:: go to authentication page
+                        if (itemName == SignOutPageRoute) {
+                          // TODO:: firebase log out
                         }
 
                         if (!menuController.isActive(itemName)) {

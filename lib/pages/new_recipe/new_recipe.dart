@@ -15,8 +15,6 @@ class NewRecipePage extends StatelessWidget {
     FocusNode focusNode = FocusNode();
     double width = MediaQuery.of(context).size.width * (5 / 6);
 
-    print(newRecipeController.recipeStarred);
-
     return Row(
       children: [
         Expanded(

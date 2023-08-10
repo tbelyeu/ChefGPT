@@ -3,11 +3,10 @@ import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/pages/authentication/widgets/sign_in_button.dart';
 import 'package:chefgpt/routing/routes.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
-import 'package:chefgpt/routing/router.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +15,14 @@ class SignInPage extends StatelessWidget {
     TextEditingController passwordTextEditingController =
         TextEditingController();
     FocusNode passwordFocusNode = FocusNode();
+    FocusNode reenterPasswordFocusNode = FocusNode();
     FocusNode buttonFocusNode = FocusNode();
 
     return Column(
       children: [
         const SizedBox(height: 20),
         const CustomText(
-          text: "Sign In",
+          text: "Sign Up",
           size: 30,
         ),
         const SizedBox(height: 20),
@@ -80,6 +80,25 @@ class SignInPage extends StatelessWidget {
             obscureText: true,
             focusNode: passwordFocusNode,
             onSubmitted: (value) {
+              reenterPasswordFocusNode.requestFocus();
+            },
+          ),
+        ),
+        const SizedBox(height: 10),
+        SizedBox(
+          width: width / 2,
+          height: 46,
+          child: TextField(
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: lightGrey),
+              ),
+              labelText: "Re-enter password",
+              labelStyle: TextStyle(fontSize: 20),
+            ),
+            obscureText: true,
+            focusNode: reenterPasswordFocusNode,
+            onSubmitted: (value) {
               buttonFocusNode.requestFocus();
             },
           ),
@@ -106,13 +125,13 @@ class SignInPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const CustomText(
-              text: "New to ChefGPT?",
+              text: "Already have an account?",
               color: darkGrey,
             ),
             TextButton(
-              onPressed: () => navigationController.navigateTo(SignUpPageRoute),
+              onPressed: () => navigationController.navigateTo(SignInPageRoute),
               child: const CustomText(
-                text: "Sign up",
+                text: "Sign in",
                 color: linkBlue,
               ),
             )

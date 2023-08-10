@@ -46,20 +46,6 @@ class NewRecipeController extends GetxController {
     ],
   ].obs;
 
-  // TODO:: star/unstar recipe
   List recipeStarred = [].obs;
   toggleRecipeStarred(index) => recipeStarred[index] = !recipeStarred[index];
-  // RxBool recipeStarred = false.obs;
-  // toggleRecipeStarred() => recipeStarred.value = !recipeStarred.value;
-
-  RxDouble turns = 0.0.obs;
-  double direction =
-      1 / 2; // 1/2 is 180 deg clockwise, -1/2 is 180 deg counter-clockwise
-  rotateIcon() {
-    turns.value += direction;
-    direction *= -1;
-  }
-
-  RxBool cardIsExpanded = true.obs;
-  toggleCardExpanded() => cardIsExpanded.value = !cardIsExpanded.value;
 }
