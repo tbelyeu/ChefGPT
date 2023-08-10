@@ -1,3 +1,4 @@
+import 'package:chefgpt/helpers/local_navigator.dart';
 import 'package:flutter/material.dart';
 
 class SmallScreen extends StatelessWidget {
@@ -5,9 +6,6 @@ class SmallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints.expand(),
-      color: Colors.green,
-    );
+    return LocalNavigator();
   }
 }

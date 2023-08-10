@@ -1,3 +1,5 @@
+import 'package:chefgpt/helpers/local_navigator.dart';
+import 'package:chefgpt/widgets/side_menu/side_menu.dart';
 import 'package:flutter/material.dart';
 
 class LargeScreen extends StatelessWidget {
@@ -7,16 +9,10 @@ class LargeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Container(
-            color: Colors.red,
-          ),
-        ),
+        const Expanded(child: SideMenu()),
         Expanded(
           flex: 5,
-          child: Container(
-            color: Colors.blue,
-          ),
+          child: LocalNavigator(),
         ),
       ],
     );
