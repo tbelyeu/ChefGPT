@@ -2,6 +2,7 @@ import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/pages/authentication/widgets/sign_in_button.dart';
 import 'package:chefgpt/routing/routes.dart';
+import 'package:chefgpt/services/auth.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -25,19 +26,24 @@ class SignInPage extends StatelessWidget {
           size: 30,
         ),
         const SizedBox(height: 20),
-        const SignInButton(
+        SignInButton(
           text: "Continue with Google",
           image: "icons/google.png",
+          onPressed: () {
+            Auth().signIn(Provider.Google);
+          },
         ),
         const SizedBox(height: 10),
-        const SignInButton(
+        SignInButton(
           text: "Continue with Apple",
           image: "icons/apple.png",
+          onPressed: () {},
         ),
         const SizedBox(height: 10),
-        const SignInButton(
+        SignInButton(
           text: "Continue with Facebook",
           image: "icons/facebook.png",
+          onPressed: () {},
         ),
         const SizedBox(height: 20),
         const CustomText(

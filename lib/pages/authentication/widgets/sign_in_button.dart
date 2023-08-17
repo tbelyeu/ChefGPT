@@ -5,14 +5,19 @@ import 'package:flutter/material.dart';
 class SignInButton extends StatelessWidget {
   final String text;
   final String image;
-  const SignInButton({super.key, required this.text, required this.image});
+  final void Function() onPressed;
+  const SignInButton(
+      {super.key,
+      required this.text,
+      required this.image,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
         padding: MaterialStateProperty.all(const EdgeInsets.all(16)),
         fixedSize: MaterialStateProperty.all(Size(width / 2, 46)),

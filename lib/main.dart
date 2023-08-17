@@ -1,18 +1,32 @@
+import 'package:chefgpt/constants/controllers.dart';
+import 'package:chefgpt/controllers/authentication_controller.dart';
 import 'package:chefgpt/controllers/ingredient_controller.dart';
 import 'package:chefgpt/controllers/navigation_controller.dart';
 import 'package:chefgpt/controllers/settings_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/layout.dart';
 import 'package:chefgpt/controllers/menu_controller.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await dotenv.load();
+
   Get.put(SideMenuController());
   Get.put(NavigationController());
   Get.put(NewRecipeController());
   Get.put(SettingsController());
+  Get.put(AuthenticationController());
+  authenticationController.initUser();
+
   runApp(const MyApp());
 }
 

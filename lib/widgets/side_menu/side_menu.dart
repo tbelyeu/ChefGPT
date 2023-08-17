@@ -2,6 +2,7 @@ import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/helpers/responsiveness.dart';
 import 'package:chefgpt/routing/routes.dart';
+import 'package:chefgpt/services/auth.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:chefgpt/widgets/side_menu/side_menu_item.dart';
 import 'package:flutter/material.dart';
@@ -44,31 +45,48 @@ class SideMenu extends StatelessWidget {
             ),
           const SizedBox(height: 20),
           // Divider(color: lightGrey.withOpacity(.1)),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: sideMenuItems
-                .map((itemName) => SideMenuItem(
-                      // Will be doing something like this to make the label sign in vs sign out
-                      // itemName: itemName == AuthenticationPageRoute
-                      //     ? "Sign In"
-                      //     : itemName,
-                      itemName: itemName,
-                      onTap: () {
-                        if (itemName == SignOutPageRoute) {
-                          // TODO:: firebase log out
-                        }
-
-                        if (!menuController.isActive(itemName)) {
-                          menuController.changeActiveItemTo(itemName);
-                          if (ResponsiveWidget.isSmallScreen(context)) {
-                            Get.back();
+          Obx(
+            () => Column(
+              mainAxisSize: MainAxisSize.min,
+              children: menuController.sideMenuItems
+                  .map((itemName) => SideMenuItem(
+                        itemName: itemName,
+                        onTap: () {
+                          if (itemName == SignOutPageRoute) {
+                            Get.dialog(
+                              AlertDialog(
+                                title: const CustomText(text: "Sign Out?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Get.back(),
+                                    child: const CustomText(
+                                        text: "Cancel", color: Colors.red),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Auth().signOut();
+                                      Get.back();
+                                    },
+                                    child: const CustomText(text: "Confirm"),
+                                  ),
+                                ],
+                              ),
+                            );
+                            return;
                           }
 
-                          navigationController.navigateTo(itemName);
-                        }
-                      },
-                    ))
-                .toList(),
+                          if (!menuController.isActive(itemName)) {
+                            menuController.changeActiveItemTo(itemName);
+                            if (ResponsiveWidget.isSmallScreen(context)) {
+                              Get.back();
+                            }
+
+                            navigationController.navigateTo(itemName);
+                          }
+                        },
+                      ))
+                  .toList(),
+            ),
           ),
         ],
       ),

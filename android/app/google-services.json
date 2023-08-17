@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "685489904508",
+    "project_id": "chefgpt-2f839",
+    "storage_bucket": "chefgpt-2f839.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685489904508:android:e495b1be342da4f8b362f9",
+        "android_client_info": {
+          "package_name": "com.example.chefgpt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685489904508-9eoqbfs9d6ukm41lu589as334vshro3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXmiYMOsYeRRWf6DYy5Dh4LZ0ANnmgNlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685489904508-9eoqbfs9d6ukm41lu589as334vshro3a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "685489904508-ljfep21nlun8sma9le831e4m2gb6roep.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chefgpt"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

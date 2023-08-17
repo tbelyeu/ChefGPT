@@ -1,3 +1,4 @@
+import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
 import 'package:chefgpt/routing/routes.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,28 @@ class SideMenuController extends GetxController {
         icon,
         color: isHovering(itemName) ? dark : lightGrey,
       );
+    }
+  }
+
+  var sideMenuItems = [
+    NewRecipePageRoute,
+    MyRecipesPageRoute,
+    SignInPageRoute,
+  ].obs;
+
+  toggleSideMenuItems() {
+    if (authenticationController.userSignedIn.value) {
+      sideMenuItems.value = [
+        NewRecipePageRoute,
+        MyRecipesPageRoute,
+        SignOutPageRoute,
+      ];
+    } else {
+      sideMenuItems.value = [
+        NewRecipePageRoute,
+        MyRecipesPageRoute,
+        SignInPageRoute,
+      ];
     }
   }
 }
