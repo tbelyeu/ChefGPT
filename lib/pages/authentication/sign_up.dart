@@ -5,6 +5,7 @@ import 'package:chefgpt/routing/routes.dart';
 import 'package:chefgpt/services/auth.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -12,11 +13,12 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    TextEditingController nameTextEditingController = TextEditingController();
     TextEditingController emailTextEditingController = TextEditingController();
     TextEditingController passwordTextEditingController =
         TextEditingController();
     FocusNode passwordFocusNode = FocusNode();
-    FocusNode reenterPasswordFocusNode = FocusNode();
+    FocusNode emailFocusNode = FocusNode();
     FocusNode buttonFocusNode = FocusNode();
 
     return Column(
@@ -30,9 +32,7 @@ class SignUpPage extends StatelessWidget {
         SignInButton(
           text: "Continue with Google",
           image: "icons/google.png",
-          onPressed: () {
-            Auth().signInWithGoogle();
-          },
+          onPressed: () => Auth().signInWith(Provider.Google),
         ),
         const SizedBox(height: 10),
         SignInButton(
@@ -57,6 +57,24 @@ class SignUpPage extends StatelessWidget {
           width: width / 2,
           height: 46,
           child: TextField(
+            controller: nameTextEditingController,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: lightGrey),
+              ),
+              labelText: "Name",
+              labelStyle: TextStyle(fontSize: 20),
+            ),
+            onSubmitted: (value) {
+              emailFocusNode.requestFocus();
+            },
+          ),
+        ),
+        const SizedBox(height: 10),
+        SizedBox(
+          width: width / 2,
+          height: 46,
+          child: TextField(
             controller: emailTextEditingController,
             decoration: const InputDecoration(
               border: OutlineInputBorder(
@@ -65,6 +83,7 @@ class SignUpPage extends StatelessWidget {
               labelText: "Email",
               labelStyle: TextStyle(fontSize: 20),
             ),
+            focusNode: emailFocusNode,
             onSubmitted: (value) {
               passwordFocusNode.requestFocus();
             },
@@ -74,39 +93,29 @@ class SignUpPage extends StatelessWidget {
         SizedBox(
           width: width / 2,
           height: 46,
-          child: TextField(
-            controller: passwordTextEditingController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: lightGrey),
-              ),
-              labelText: "Password",
-              labelStyle: TextStyle(fontSize: 20),
+          child: Obx(
+            () => TextField(
+              controller: passwordTextEditingController,
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: lightGrey),
+                  ),
+                  labelText: "Password",
+                  labelStyle: const TextStyle(fontSize: 20),
+                  suffixIcon: IconButton(
+                    icon: authenticationController.signUpPasswordVisible.value
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
+                    onPressed: () => authenticationController
+                        .toggleSignUpPasswordVisibility(),
+                  )),
+              obscureText:
+                  !authenticationController.signUpPasswordVisible.value,
+              focusNode: passwordFocusNode,
+              onSubmitted: (value) {
+                buttonFocusNode.requestFocus();
+              },
             ),
-            obscureText: true,
-            focusNode: passwordFocusNode,
-            onSubmitted: (value) {
-              reenterPasswordFocusNode.requestFocus();
-            },
-          ),
-        ),
-        const SizedBox(height: 10),
-        SizedBox(
-          width: width / 2,
-          height: 46,
-          child: TextField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: lightGrey),
-              ),
-              labelText: "Re-enter password",
-              labelStyle: TextStyle(fontSize: 20),
-            ),
-            obscureText: true,
-            focusNode: reenterPasswordFocusNode,
-            onSubmitted: (value) {
-              buttonFocusNode.requestFocus();
-            },
           ),
         ),
         const SizedBox(height: 20),
@@ -117,6 +126,12 @@ class SignUpPage extends StatelessWidget {
           ),
           focusNode: buttonFocusNode,
           onPressed: () {
+            Auth().signUpWithEmailAndPassword(
+              nameTextEditingController.text,
+              emailTextEditingController.text,
+              passwordTextEditingController.text,
+            );
+
             print("pressed");
             buttonFocusNode.unfocus();
           },

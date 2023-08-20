@@ -5,6 +5,7 @@ import 'package:chefgpt/routing/routes.dart';
 import 'package:chefgpt/services/auth.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -29,9 +30,7 @@ class SignInPage extends StatelessWidget {
         SignInButton(
           text: "Continue with Google",
           image: "icons/google.png",
-          onPressed: () {
-            Auth().signIn(Provider.Google);
-          },
+          onPressed: () => Auth().signInWith(Provider.Google),
         ),
         const SizedBox(height: 10),
         SignInButton(
@@ -44,6 +43,7 @@ class SignInPage extends StatelessWidget {
           text: "Continue with Facebook",
           image: "icons/facebook.png",
           onPressed: () {},
+          //  => Auth().signIn(Provider.Facebook),
         ),
         const SizedBox(height: 20),
         const CustomText(
@@ -73,20 +73,29 @@ class SignInPage extends StatelessWidget {
         SizedBox(
           width: width / 2,
           height: 46,
-          child: TextField(
-            controller: passwordTextEditingController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: lightGrey),
-              ),
-              labelText: "Password",
-              labelStyle: TextStyle(fontSize: 20),
+          child: Obx(
+            () => TextField(
+              controller: passwordTextEditingController,
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: lightGrey),
+                  ),
+                  labelText: "Password",
+                  labelStyle: const TextStyle(fontSize: 20),
+                  suffixIcon: IconButton(
+                    icon: authenticationController.signInPasswordVisible.value
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
+                    onPressed: () => authenticationController
+                        .toggleSignInPasswordVisibility(),
+                  )),
+              obscureText:
+                  !authenticationController.signInPasswordVisible.value,
+              focusNode: passwordFocusNode,
+              onSubmitted: (value) {
+                buttonFocusNode.requestFocus();
+              },
             ),
-            obscureText: true,
-            focusNode: passwordFocusNode,
-            onSubmitted: (value) {
-              buttonFocusNode.requestFocus();
-            },
           ),
         ),
         const SizedBox(height: 20),
@@ -97,6 +106,9 @@ class SignInPage extends StatelessWidget {
           ),
           focusNode: buttonFocusNode,
           onPressed: () {
+            Auth().signInWithEmailAndPassword(emailTextEditingController.text,
+                passwordTextEditingController.text);
+
             print("pressed");
             buttonFocusNode.unfocus();
           },

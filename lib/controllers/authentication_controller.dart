@@ -19,4 +19,12 @@ class AuthenticationController extends GetxController {
       menuController.toggleSideMenuItems();
     }
   }
+
+  var signUpPasswordVisible = false.obs;
+  toggleSignUpPasswordVisibility() =>
+      signUpPasswordVisible.value = !signUpPasswordVisible.value;
+
+  var signInPasswordVisible = false.obs;
+  toggleSignInPasswordVisibility() =>
+      signInPasswordVisible.value = !signInPasswordVisible.value;
 }
