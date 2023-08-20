@@ -28,7 +28,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               },
             ),
       elevation: 0,
-      backgroundColor: pastelGreen,
+      backgroundColor: light,
       title: Row(children: [
         const Visibility(
           child: CustomText(

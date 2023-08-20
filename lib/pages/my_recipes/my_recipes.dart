@@ -26,9 +26,9 @@ class MyRecipesPage extends StatelessWidget {
               Expanded(
                 child: Obx(
                   () => ListView.builder(
-                    itemCount: newRecipeController.recipesList.length,
+                    itemCount: newRecipeController.recipeTitlesList.length,
                     itemBuilder: (context, index) {
-                      final title = newRecipeController.recipesList[index];
+                      final title = newRecipeController.recipeTitlesList[index];
                       final ingredients =
                           newRecipeController.recipeIngredientsList[index];
                       final instructions =

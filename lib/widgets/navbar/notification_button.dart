@@ -27,7 +27,7 @@ class NotificationButton extends StatelessWidget {
               decoration: BoxDecoration(
                 color: accentPurple,
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(color: pastelGreen, width: 2),
+                border: Border.all(color: light, width: 2),
               ),
             ),
           )
