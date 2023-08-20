@@ -1,5 +1,6 @@
 import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/controllers/authentication_controller.dart';
+import 'package:chefgpt/controllers/my_recipes_controller.dart';
 import 'package:chefgpt/controllers/new_recipe_controller.dart';
 import 'package:chefgpt/controllers/navigation_controller.dart';
 import 'package:chefgpt/controllers/settings_controller.dart';
@@ -25,6 +26,7 @@ Future main() async {
   Get.put(SideMenuController());
   Get.put(NavigationController());
   Get.put(NewRecipeController());
+  Get.put(MyRecipesController());
   Get.put(SettingsController());
   Get.put(AuthenticationController());
   authenticationController.initUser();

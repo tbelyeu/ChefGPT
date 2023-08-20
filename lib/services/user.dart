@@ -2,7 +2,7 @@ import 'package:chefgpt/constants/firebase.dart';
 import 'package:chefgpt/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserServices {
+class UserService {
   String collection = "users";
 
   void createUser({required id, required String name, required String photo}) {

@@ -9,7 +9,9 @@ enum Provider { Google, Apple, Facebook, EmailAndPassword }
 
 class Auth {
   User? currentUser = auth.currentUser;
-  UserServices userServices = UserServices();
+  UserService userServices = UserService();
+
+  bool userSignedIn() => (auth.currentUser != null) ? true : false;
 
   Future<UserCredential?> signInWithGoogle() async {
     // Create a new provider
@@ -146,5 +148,6 @@ class Auth {
     await auth.signOut();
     authenticationController.userSignedIn.value = false;
     menuController.toggleSideMenuItems();
+    myRecipesController.savedRecipes.clear();
   }
 }

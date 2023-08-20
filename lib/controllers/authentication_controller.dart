@@ -13,7 +13,7 @@ class AuthenticationController extends GetxController {
   Future initUser() async {
     if (auth.currentUser != null) {
       UserModel fetchedUser =
-          await UserServices().getUserById(auth.currentUser!.uid);
+          await UserService().getUserById(auth.currentUser!.uid);
       user.value = fetchedUser;
       userSignedIn.value = true;
       menuController.toggleSideMenuItems();
