@@ -49,6 +49,7 @@ class AddIngredientsPanel extends StatelessWidget {
         Expanded(
           child: Obx(
             () => ListView.builder(
+              shrinkWrap: true,
               itemCount: newRecipeController.ingredientsList.length,
               itemBuilder: (context, index) {
                 final ingredient = newRecipeController.ingredientsList[index];

@@ -12,7 +12,8 @@ pubspec.lock
 doc/api/
 
 # dotenv environment variables file
-.env*
+*.env
+dotenv
 !.env.template
 
 # Avoid committing generated Javascript files:
@@ -28,3 +29,7 @@ doc/api/
 .flutter-plugins-dependencies
 
 .vscode/
+
+# Firebase hosting files
+.firebase/
+.firebaserc

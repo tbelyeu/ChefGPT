@@ -127,7 +127,7 @@ class NewRecipeController extends GetxController {
   updateNumberToGenerate(newValue) =>
       numberOfRecipesToGenerate.value = newValue;
 
-  var recipeStrictness = 1.0.obs;
+  var recipeStrictness = 2.0.obs;
   updatStrictness(newValue) => recipeStrictness.value = newValue;
 
   String strictnessLevelMessage(strictness) {

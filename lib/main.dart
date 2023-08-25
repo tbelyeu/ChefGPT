@@ -20,7 +20,7 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await dotenv.load();
+  await dotenv.load(fileName: "dotenv");
   OpenAI.apiKey = dotenv.get("OPEN_AI_API_KEY");
 
   Get.put(SideMenuController());
