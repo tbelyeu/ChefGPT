@@ -84,6 +84,7 @@ class MyRecipesLarge extends StatelessWidget {
                                 size: 20,
                                 color: darkGrey,
                               ),
+                              SizedBox(height: 10),
                               CustomText(
                                 text: "Starred recipes show up here.",
                                 size: 20,

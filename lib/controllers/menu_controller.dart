@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class SideMenuController extends GetxController {
   static SideMenuController instance = Get.find();
 
-  var activeItem = NewRecipePageRoute.obs;
+  var activeItem = HomePageRoute.obs;
   var hoverItem = "".obs;
 
   changeActiveItemTo(String itemName) {
@@ -23,6 +23,8 @@ class SideMenuController extends GetxController {
 
   Widget returnIconFor(String itemName) {
     switch (itemName) {
+      case HomePageRoute:
+        return _customIcon(Icons.home, itemName);
       case NewRecipePageRoute:
         return _customIcon(Icons.add, itemName);
       case MyRecipesPageRoute:
@@ -50,6 +52,7 @@ class SideMenuController extends GetxController {
   }
 
   var sideMenuItems = [
+    HomePageRoute,
     NewRecipePageRoute,
     MyRecipesPageRoute,
     SignInPageRoute,
@@ -58,12 +61,14 @@ class SideMenuController extends GetxController {
   toggleSideMenuItems() {
     if (authenticationController.userSignedIn.value) {
       sideMenuItems.value = [
+        HomePageRoute,
         NewRecipePageRoute,
         MyRecipesPageRoute,
         SignOutPageRoute,
       ];
     } else {
       sideMenuItems.value = [
+        HomePageRoute,
         NewRecipePageRoute,
         MyRecipesPageRoute,
         SignInPageRoute,
