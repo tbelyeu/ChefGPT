@@ -58,11 +58,8 @@ class NewRecipeSmall extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      label: const CustomText(
-                        text: "New Ingredient",
-                        size: 18,
-                        color: lightGrey,
-                      ),
+                      labelText: "New Ingredient",
+                      labelStyle: const TextStyle(fontSize: 20),
                     ),
                     focusNode: focusNode,
                     onSubmitted: (value) {

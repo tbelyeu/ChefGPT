@@ -30,11 +30,13 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       elevation: 0,
       backgroundColor: light,
       title: Row(children: [
-        const Visibility(
+        Visibility(
           child: CustomText(
             text: "ChefGPT",
             size: 25,
-            weight: FontWeight.w600,
+            weight: platformController.isMobile.value
+                ? FontWeight.normal
+                : FontWeight.w600,
           ),
         ),
         Expanded(child: Container()),

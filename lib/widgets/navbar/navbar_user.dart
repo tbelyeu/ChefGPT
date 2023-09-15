@@ -18,11 +18,13 @@ class NavBarUser extends StatelessWidget {
                   height: 22,
                   color: dark,
                 ),
-                const SizedBox(width: 20),
-                CustomText(
-                  text: authenticationController.user.value.name,
-                  size: 20,
-                ),
+                if (!platformController.isMobile.value)
+                  const SizedBox(width: 20),
+                if (!platformController.isMobile.value)
+                  CustomText(
+                    text: authenticationController.user.value.name,
+                    size: 20,
+                  ),
                 const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.all(2),

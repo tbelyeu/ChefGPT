@@ -47,7 +47,7 @@ class DefaultFirebaseOptions {
     appId: '1:685489904508:web:057952595a3fe99ab362f9',
     messagingSenderId: '685489904508',
     projectId: 'chefgpt-2f839',
-    authDomain: 'chefgpt-2f839.firebaseapp.com',
+    authDomain: 'auth.chef-gpt.app',
     storageBucket: 'chefgpt-2f839.appspot.com',
     measurementId: 'G-D7VD9SSDHV',
   );

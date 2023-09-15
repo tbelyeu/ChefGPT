@@ -12,7 +12,6 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     TextEditingController nameTextEditingController = TextEditingController();
     TextEditingController emailTextEditingController = TextEditingController();
     TextEditingController passwordTextEditingController =
@@ -20,6 +19,12 @@ class SignUpPage extends StatelessWidget {
     FocusNode passwordFocusNode = FocusNode();
     FocusNode emailFocusNode = FocusNode();
     FocusNode buttonFocusNode = FocusNode();
+    double width = MediaQuery.of(context).size.width;
+    if (platformController.isMobile.value) {
+      width = width - 60;
+    } else {
+      width = width / 2;
+    }
 
     return Column(
       children: [
@@ -30,18 +35,24 @@ class SignUpPage extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         SignInButton(
+          isEnabled: true,
+          width: width,
           text: "Continue with Google",
           image: "icons/google.png",
           onPressed: () => Auth().signInWith(Provider.Google),
         ),
         const SizedBox(height: 10),
         SignInButton(
+          isEnabled: false,
+          width: width,
           text: "Continue with Apple",
           image: "icons/apple.png",
           onPressed: () {},
         ),
         const SizedBox(height: 10),
         SignInButton(
+          isEnabled: false,
+          width: width,
           text: "Continue with Facebook",
           image: "icons/facebook.png",
           onPressed: () {},
@@ -54,7 +65,7 @@ class SignUpPage extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         SizedBox(
-          width: width / 2,
+          width: width,
           height: 46,
           child: TextField(
             controller: nameTextEditingController,
@@ -72,7 +83,7 @@ class SignUpPage extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          width: width / 2,
+          width: width,
           height: 46,
           child: TextField(
             controller: emailTextEditingController,
@@ -91,7 +102,7 @@ class SignUpPage extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          width: width / 2,
+          width: width,
           height: 46,
           child: Obx(
             () => TextField(
@@ -121,7 +132,7 @@ class SignUpPage extends StatelessWidget {
         const SizedBox(height: 20),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            fixedSize: Size(width / 2, 46),
+            fixedSize: Size(width, 46),
             backgroundColor: accentPurple,
           ),
           focusNode: buttonFocusNode,

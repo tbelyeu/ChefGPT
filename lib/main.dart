@@ -3,6 +3,7 @@ import 'package:chefgpt/controllers/authentication_controller.dart';
 import 'package:chefgpt/controllers/my_recipes_controller.dart';
 import 'package:chefgpt/controllers/new_recipe_controller.dart';
 import 'package:chefgpt/controllers/navigation_controller.dart';
+import 'package:chefgpt/controllers/platform_controller.dart';
 import 'package:chefgpt/controllers/settings_controller.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ Future main() async {
   Get.put(NewRecipeController());
   Get.put(MyRecipesController());
   Get.put(SettingsController());
+  Get.put(PlatformController());
   Get.put(AuthenticationController());
   authenticationController.initUser();
 

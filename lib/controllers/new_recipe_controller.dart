@@ -23,6 +23,7 @@ class NewRecipeController extends GetxController {
   removeIngredientAtIndex(index) => ingredientsList.removeAt(index);
 
   generateRecipes() async {
+    // Format message to gpt
     String content = Chat().formatMessageContent(
       listOfIngredients: listDynamicToListString(ingredientsList),
       numberOfRecipes: numberOfRecipesToGenerate.round(),
@@ -33,11 +34,24 @@ class NewRecipeController extends GetxController {
       recipesList: listDynamicToListString(recipeTitlesList),
     );
 
+    // print formatted message
     print(content);
     print("\n");
 
+    // display progress indicator
+    Get.dialog(
+      const Center(
+        child: CircularProgressIndicator.adaptive(),
+      ),
+    );
+
+    // await response from gpt
     var completion = await Chat().createChatCompletion(content);
 
+    // remove progress indicator
+    Get.back();
+
+    // process into widgets
     print(completion);
     processGeneratedRecipes(completion);
   }
@@ -133,11 +147,11 @@ class NewRecipeController extends GetxController {
   String strictnessLevelMessage(strictness) {
     switch (strictness) {
       case 1.0:
-        return "Use only these ingredients";
+        return "Use any of these ingredients";
       case 2.0:
         return "Use mostly these ingredients";
       case 3.0:
-        return "Use any of these ingredients";
+        return "Use only these ingredients";
       default:
         return "error";
     }
@@ -146,11 +160,11 @@ class NewRecipeController extends GetxController {
   Color strictnessSliderColors(strictness) {
     switch (strictness) {
       case 1.0:
-        return Colors.red;
+        return Colors.green;
       case 2.0:
         return Colors.yellow;
       case 3.0:
-        return Colors.green;
+        return Colors.red;
       default:
         return Colors.blue;
     }
