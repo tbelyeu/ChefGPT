@@ -7,4 +7,3 @@ const Color dark = Color(0xFF010101);
 const Color pastelGreen = Color(0xFF5ADA86);
 const Color sharpGreen = Color(0xFF01D449);
 const Color accentPurple = Color(0xFF834CAB);
-const Color linkBlue = Color(0xFF215EC7);

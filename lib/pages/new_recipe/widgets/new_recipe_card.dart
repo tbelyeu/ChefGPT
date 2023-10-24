@@ -1,5 +1,8 @@
 import 'package:chefgpt/constants/controllers.dart';
 import 'package:chefgpt/constants/style.dart';
+import 'package:chefgpt/models/recipe.dart';
+import 'package:chefgpt/services/auth.dart';
+import 'package:chefgpt/services/recipe.dart';
 import 'package:chefgpt/widgets/ordered_list.dart';
 import 'package:chefgpt/widgets/unordered_list.dart';
 import 'package:chefgpt/widgets/custom_text.dart';
@@ -61,6 +64,35 @@ class NewRecipeCard extends StatelessWidget {
                   splashRadius: 0.01,
                   onPressed: () {
                     newRecipeController.toggleRecipeStarred(index);
+
+                    if (Auth().userSignedIn()) {
+                      if (newRecipeController.recipeStarred[index]) {
+                        RecipeService().createRecipe(
+                          userId: Auth().currentUser!.uid,
+                          title: title,
+                          ingredients: ingredients,
+                          instructions: instructions,
+                        );
+                      } else {
+                        RecipeService().deleteRecipe(
+                          userId: Auth().currentUser!.uid,
+                          title: title,
+                          ingredients: ingredients,
+                          instructions: instructions,
+                        );
+                      }
+                    } else {
+                      if (newRecipeController.recipeStarred[index]) {
+                        RecipeModel recipe = RecipeModel(
+                          title: title,
+                          ingredients: ingredients,
+                          instructions: instructions,
+                        );
+                        myRecipesController.addSavedRecipe(recipe);
+                      } else {
+                        myRecipesController.removeRecipeAtIndex(index);
+                      }
+                    }
                   },
                 ),
               ),

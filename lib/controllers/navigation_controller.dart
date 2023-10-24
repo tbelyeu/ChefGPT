@@ -1,4 +1,4 @@
-import 'package:chefgpt/routing/routes.dart';
+import 'package:chefgpt/constants/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,25 +7,11 @@ class NavigationController extends GetxController {
   final GlobalKey<NavigatorState> navigationKey = GlobalKey();
 
   Future<dynamic> navigateTo(String routeName) {
+    authenticationController.signInPasswordVisible.value = false;
+    authenticationController.signUpPasswordVisible.value = false;
+
     return navigationKey.currentState!.pushNamed(routeName);
   }
 
   goBack() => navigationKey.currentState!.pop();
-
-  RxBool showSignIn = true.obs;
-  RxBool showSignUp = false.obs;
-  RxBool showSignOut = false.obs;
-
-  toggleSignInSignUp() {
-    if (showSignIn.value) {
-      sideMenuItems.removeAt(2);
-      sideMenuItems.add(SignInPageRoute);
-    } else if (showSignUp.value) {
-      sideMenuItems.removeAt(2);
-      sideMenuItems.add(SignUpPageRoute);
-    } else if (showSignOut.value) {
-      sideMenuItems.removeAt(2);
-      sideMenuItems.add(SignOutPageRoute);
-    }
-  }
 }
